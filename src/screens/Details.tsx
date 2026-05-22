@@ -15,7 +15,7 @@ const Details = ({route}:any) => {
   return (
     <View>
       <Text>Details</Text>
-      <Button onPressIn={()=>navigator.push("Profiles")}>Go to Profile of {username}</Button>
+      <Button onPressIn={()=>navigator.navigate("Profiles")}>Go to Profile of {username}</Button>
     </View>
   )
 }

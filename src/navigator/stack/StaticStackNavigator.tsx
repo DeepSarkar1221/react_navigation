@@ -4,18 +4,17 @@ import Details from "../../screens/Details";
 import Profile from "../../screens/Profile";
 import { createStaticNavigation } from "@react-navigation/native";
 
-
 const stack = createNativeStackNavigator({
   screens: {
     Home: {
-        screen:HomeScreen,
-        options:{
-            title:"DashBoard2",
-            headerTintColor:"pink",
-            headerStyle:{
-                backgroundColor:"yellow"
-            }
-        }
+      screen: HomeScreen,
+      options: {
+        title: "DashBoard2",
+        headerTintColor: "pink",
+        headerStyle: {
+          backgroundColor: "yellow",
+        },
+      },
     },
     Detail: Details,
     Profiles: Profile,
@@ -24,8 +23,6 @@ const stack = createNativeStackNavigator({
 
 const Navigation = createStaticNavigation(stack);
 
-export default function(){
-    return(
-        <Navigation/>
-    )
+export default function () {
+  return <Navigation />;
 }
