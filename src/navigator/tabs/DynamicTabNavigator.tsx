@@ -4,17 +4,25 @@ import { useNavigation, NavigationContainer } from "@react-navigation/native";
 import { Button } from "@react-navigation/elements";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import HomeScreen from "../../screens/HomeScreen";
+import Details from "../../screens/Details";
 
-function HomeScreen() {
-  const navigation = useNavigation();
+const HomeStack = createNativeStackNavigator();
 
+function HomeStackScreen() {
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>Home Screen</Text>
-      <Button onPress={() => navigation.navigate("Search")}>
-        Go to Search
-      </Button>
-    </View>
+    <HomeStack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: "#67a6b3",
+        },
+        headerTintColor: "#00fab3",
+      }}
+    >
+      <HomeStack.Screen name="Home" component={HomeScreen}></HomeStack.Screen>
+      <HomeStack.Screen name="Details" component={Details}></HomeStack.Screen>
+    </HomeStack.Navigator>
   );
 }
 
@@ -36,7 +44,7 @@ function ProfileScreen() {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Text>Profile Screen</Text>
-      <Button onPress={() => navigation.navigate("Home")}>Go to Home</Button>
+      <Button onPress={() => navigation.navigate("OverView")}>Go to Home</Button>
     </View>
   );
 }
@@ -53,7 +61,7 @@ function Mytab() {
         tabBarInactiveTintColor: "tomato",
         tabBarIcon: ({ focused, color, size }) => {
           const icon =
-            route.name === "Home"
+            route.name === "OverView"
               ? focused
                 ? "home"
                 : "home-outline"
@@ -70,13 +78,10 @@ function Mytab() {
       })}
     >
       <tab.Screen
-        name="Home"
-        component={HomeScreen}
+        name="OverView"
+        component={HomeStackScreen}
         options={{
-          headerStyle: {
-            backgroundColor: "#67a6b3",
-          },
-          headerTintColor: "#00fab3",
+          headerShown:false
         }}
       />
       <tab.Screen
